@@ -1,9 +1,5 @@
 package spittr.web;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
-
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import spittr.Spitter;
 import spittr.data.SpitterRepository;
+
+import javax.validation.Valid;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @RequestMapping("/spitter")
 public class SpitterController {
 
-    static public Logger logger = LoggerFactory.getLogger(SpitterController.class);
+    static private Logger logger = LoggerFactory.getLogger(SpitterController.class);
 
     private SpitterRepository spitterRepository;
 
@@ -51,7 +51,7 @@ public class SpitterController {
 
     @RequestMapping(value = "/me", method = GET)
     public String me() {
-        System.out.println("ME ME");
+        logger.info("ME ME");
         return "home";
     }
 
